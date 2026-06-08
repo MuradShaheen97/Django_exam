@@ -15,10 +15,10 @@
         <div class="container">
             <div>
                 <h2>Registration</h2>
-                <form action="/register" method="POST">
+                <form action="{% url 'app1:user'%}" method="POST">
                     {% csrf_token %}
                     <label>First Name</label>
-                    <input type="text" name="first_name">
+                    <input type="text" name="game_name">
                     <label>Last Name</label>
                     <input type="text" name="last_name">
                     <label>Email</label>
@@ -34,7 +34,7 @@
             </div>
             <div>
                 <h2>Login</h2>
-                <form action="/login" method="POST">
+                <form action="{% url 'app1:user'%}" method="POST">
                     {% csrf_token %}
                     <label>Email</label>
                     <input type="email" name="email">

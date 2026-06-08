@@ -23,9 +23,9 @@
         </table>
         <hr>
         <h2>Add a games</h2>
-        <form action="/django_exam/create_user/" method="POST">
+        <form action="{% url 'app1:create_game' %}" method="POST">
             {% csrf_token %}
-            <p>First Name: <input type="text" name="first_name"></p>
+            <p>game_name: <input type="text" name="game_name"></p>
             <p>genre : <input type="text" name="genre"></p>
             <p>release_date: <input type="text" name="release_date"></p>
             <p>description: <input type="text" name="description"></p>

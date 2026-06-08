@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User
+from .models import *
 import bcrypt
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'htmls/index.html')
+
+
+
+
 def register(request):
     if request.method == 'POST':
         errors = User.objects.register_validator(request.POST)
@@ -61,17 +65,17 @@ def index(request):
     context = {
         "users": User.objects.all()
     }
-    return render(request, "app1/user.html", context)
-def create_user(request):
+    return render(request, "htmls/user.html", context)
+def create_game(request):
     game_name=request.POST["game_name"]
     
     genre=request.POST["genre"]
     release_date=request.POST["release_date"]
     
     description=request.POST["description"]
-    create_user(game_name,genre,release_date,description,)
+    create_games(game_name,genre,release_date,description,)
     return redirect("/user.html/")
 
 def user_view(request):
     # Your view logic here
-    return render(request, 'user.html')
+    return render(request,"htmls/user.html")

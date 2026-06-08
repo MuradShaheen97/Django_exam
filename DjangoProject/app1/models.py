@@ -60,12 +60,12 @@ class User(models.Model):
     objects = UserManager()
 class User(models.Model):
     game_name = models.CharField(max_length=45)
-    genre = models.IntegerField()
+    genre = models.CharField(max_length=100)
     release_date=models.IntegerField()
     description=models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-def creat_user(game_name,genre,release_date,description):
+def create_games(game_name,genre,release_date,description):
     User.objects.create(
         game_name=game_name,
         genre=genre,
