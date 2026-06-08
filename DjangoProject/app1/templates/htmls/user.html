@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>games</title>
+    </head>
+    <body>
+        <h1>All the games</h1>
+        <table border="1">
+            <tr>
+                <th>game_name</th>
+                <th>genre</th>
+                <th>release_date</th>
+                <th>description</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.game_name }}</td>
+                <td>{{ user.genre }} {{ user.genre }}</td>
+                <td>{{ user.release_date }}</td>
+                <td>{{ user.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <h2>Add a games</h2>
+        <form action="/django_exam/create_user/" method="POST">
+            {% csrf_token %}
+            <p>First Name: <input type="text" name="first_name"></p>
+            <p>genre : <input type="text" name="genre"></p>
+            <p>release_date: <input type="text" name="release_date"></p>
+            <p>description: <input type="text" name="description"></p>
+            <button type="submit">create</button>
+        </form>
+    </body>
+</html>
