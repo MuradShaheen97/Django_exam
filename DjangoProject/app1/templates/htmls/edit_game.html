@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Game</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <img
+    src="{{ user.avatar }}"
+    alt="Avatar"
+    width="100"
+    height="100"
+    class="rounded-circle"
+>
+        <h2>Welcome {{ request.session.user_name }}</h2>
+        <a href="/logout" class="btn btn-outline-danger">Logout</a>
+    </div>
+
+    <h3 class="mb-4">Edit Game</h3>
+
+    <form action="/update/game/{{ game.id }}" method="POST" class="col-md-6">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Game Name</label>
+            <input 
+                type="text" 
+                name="name" 
+                class="form-control" 
+                value="{{ game.name }}"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Genre</label>
+            <input 
+                type="text" 
+                name="genre" 
+                class="form-control" 
+                value="{{ game.genre }}"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Release Date</label>
+            <input 
+                type="date" 
+                name="release_date" 
+                class="form-control" 
+                value="{{ game.release_date|date:'Y-m-d' }}"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea 
+                name="description" 
+                class="form-control" 
+                rows="6"
+            >{{ game.description }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Apply</button>
+
+        <a href="/game/{{ game.id }}" class="btn btn-secondary ms-2">
+            Cancel
+        </a>
+    </form>
+
+</div>
+
+</body>
+</html>
